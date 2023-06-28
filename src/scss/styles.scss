@@ -1,0 +1,117 @@
+@import "bootstrap/scss/bootstrap";
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+$bg-calc-body: #f3f3f3;
+
+$bg-op: #f9f9f9;
+$bg-op-hover: #f6f6f6;
+$bg-op-down: #f4f4f4;
+
+$bg-num: #ffffff;
+$bg-num-hover: #fcfcfc;
+$bg-num-down: #f9f9f9;
+
+$bg-eq: #005a9e;
+$bg-eq-hover: #196aa7;
+$bg-eq-down: #3179af;
+
+$text-color: #1a1a1a;
+
+$btn-width: 75px;
+$btn-height: 45px;
+
+$result-height: 100px;
+
+button {
+  padding: 0px;
+}
+
+.main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+
+.calc-container {
+  background-color: $bg-calc-body;
+  box-shadow: 0px 0px 5.75px 0.75px #818181;
+  border: 1px solid #818181;
+  margin: auto;
+  padding: 4px;
+  border-radius: 3px;
+}
+
+.keys {
+  display: grid;
+  grid-template-columns: repeat(4, $btn-width);
+  grid-auto-rows: $btn-height;
+  gap: 4px;
+}
+
+.btn-op {
+  background-color: $bg-op;
+  border: none;
+  box-shadow: 0 0 0 0.5px #c7c7c7;
+  border-radius: 3px;
+}
+
+.btn-op:hover {
+  background-color: $bg-op-hover;
+  border: none;
+}
+
+.btn-op:active {
+  background-color: $bg-op-down;
+  border: none;
+}
+
+.btn-num {
+  background-color: $bg-num;
+  border: none;
+  box-shadow: 0 0 0 0.5px #c7c7c7;
+  border-radius: 3px;
+}
+
+.btn-num:hover {
+  background-color: $bg-num-hover;
+  border: none;
+}
+
+.btn-num:active {
+  background-color: $bg-num-down;
+  border: none;
+}
+
+.btn-eq {
+  background-color: $bg-eq;
+  border: none;
+  box-shadow: 0 0 0 0.5px #c7c7c7;
+  color: white;
+  border-radius: 3px;
+}
+
+.btn-eq:hover {
+  background-color: $bg-eq-hover;
+  border: none;
+  color: white;
+}
+
+.btn-eq:active {
+  background-color: $bg-eq-down;
+  border: none;
+  color: white;
+}
+
+#numberDisplay,
+#resultDisplay {
+  width: 100%;
+  max-width: 312px;
+  word-break: break-word;
+  text-align: end;
+  font-family: "Roboto Mono", monospace;
+}
+
+#resultDisplay {
+  min-height: 24px;
+}
