@@ -1,9 +1,5 @@
 import { MathOperation, operate as mathOperate } from "./MathOperation";
 
-enum MathOperatorState {
-  selectFirstNumber,
-}
-
 export class MathOperator {
   private _numberExp: string = "0";
   private _resultExp: string = "";
@@ -22,6 +18,7 @@ export class MathOperator {
   }
 
   appendNumber: (number: string) => MathOperator = (number) => {
+    if (this._numberExp == undefined) this._numberExp = "0";
     if (Number.isNaN(+number) && number !== ".") {
       return this;
     }
@@ -62,7 +59,7 @@ export class MathOperator {
     return this;
   };
 
-  appendOperator: (operationName: string) => MathOperator = (operationName) => {
+  appendOperation: (operationName: string) => MathOperator = (operationName) => {
     try {
       const operationIsValid = this._isOperationValid(operationName);
       if (operationIsValid) {
@@ -92,11 +89,13 @@ export class MathOperator {
         this._calculate()._resultExp = `${this._number1} ${this._operation?.toString()} ${this._number2} = ${this._result}`;
       } catch (err) {
         this._resultExp = err as string;
+        this._reset();
       }
     } else {
       this._resultExp = `${+this._numberExp} = ${+this._numberExp}`;
     }
-    this._reset();
+    this._numberExp = this._result?.toString() as string;
+    this._result = null;
     return this;
   };
 
