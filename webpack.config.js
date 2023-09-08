@@ -7,13 +7,26 @@ module.exports = {
   watch: true,
   target: "web",
   mode: "development",
-  entry: ["./src/ts/index.ts", "webpack-dev-server/client?http://localhost:3000", "webpack/hot/only-dev-server"],
+  entry: ["./src/ts/index.ts"],
   module: {
     rules: [
       {
         test: /\.ts$/,
-        use: "ts-loader",
         include: [path.resolve(__dirname, "src", "ts")],
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              presets: [["@babel/preset-env", { targets: "defaults" }]],
+            },
+          },
+          {
+            loader: "ts-loader",
+            options: {
+              transpileOnly: true,
+            },
+          },
+        ],
       },
       {
         test: /\.(scss)$/,
